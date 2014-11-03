@@ -1,0 +1,6 @@
+FROM busybox
+RUN mkdir /install
+COPY ./install.sh /
+COPY ./nsenter /
+COPY ./socat /
+CMD ["/install.sh"]

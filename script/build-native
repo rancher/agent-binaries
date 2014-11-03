@@ -1,0 +1,28 @@
+#!/bin/bash
+set -e pipefile
+
+source $(dirname $0)/build-wrapper-common.sh
+
+mkdir -p dist build
+cp install.sh dist
+
+cd build
+
+curl -s https://www.kernel.org/pub/linux/utils/util-linux/v2.24/util-linux-2.24.tar.xz | tar xvJf -
+cd util-linux*
+./configure
+make -j4 nsenter
+cp nsenter ../../dist
+cd -
+
+curl -s http://www.dest-unreach.org/socat/download/socat-1.7.2.4.tar.bz2 | tar xvjf -
+cd socat*
+LDFLAGS="-static" ./configure
+make -j4 socat
+cp socat ../../dist
+
+cd ../..
+
+if [ "$CHOWN_USER" ]; then
+    chown -R ${CHOWN_USER} .
+fi

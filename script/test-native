@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+source $(dirname $0)/build-wrapper-common.sh
+
+./dist/socat -h >/dev/null
+./dist/nsenter -h >/dev/null
+
+echo All OK

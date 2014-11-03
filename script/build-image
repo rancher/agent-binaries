@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+
+IMAGE=${1:-rancher/cattle-agent-binaries}
+
+cd $(dirname $0)/..
+
+./script/build
+
+cd dist
+cp ../Dockerfile.image Dockerfile
+
+docker build -t ${IMAGE} .
+
+echo ${IMAGE} > images

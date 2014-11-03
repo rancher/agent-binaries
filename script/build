@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source $(dirname $0)/build-wrapper-common.sh
+
+build_in_docker
