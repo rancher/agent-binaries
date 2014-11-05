@@ -1,0 +1,33 @@
+#!/bin/bash
+
+set -e
+
+setup_dockerfile()
+{
+    if [ ! -e Dockerfile ]; then
+        cat > Dockerfile << "EOF"
+FROM ubuntu:14.04.1
+COPY ./script/bootstrap /script/bootstrap
+RUN ./script/bootstrap
+EOF
+    fi
+}
+
+run_in_docker()
+{
+    LABEL=$(git rev-parse --abbrev-ref HEAD)
+    IMAGE="build-$(basename $(pwd)):$LABEL"
+
+    docker build -t $IMAGE .
+    docker run --rm -e CHOWN_USER="$(id -u):$(id -g)" -v $(pwd):/source $IMAGE $1
+}
+
+cd $(dirname $0)/..
+
+setup_dockerfile
+
+if [ -f "$1" ] && [ -x "$1" ]; then
+    run_in_docker $(readlink -f $1)
+else
+    run_in_docker /source/script/$1
+fi

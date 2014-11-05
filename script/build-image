@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-IMAGE=${1:-rancher/cattle-agent-binaries}
+IMAGE=${1:-rancher/cattle-agent-binaries:$(git rev-parse HEAD)}
 
 cd $(dirname $0)/..
 
-./script/build
+./script/wrap build
 
 cd dist
 cp ../Dockerfile.image Dockerfile

@@ -1,0 +1,7 @@
+image: rancher/docker-dind-base:latest
+script:
+  - ./script/ci
+notify:
+  email:
+    recipients:
+      - bill@rancher.com
