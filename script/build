@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e pipefile
 
-source $(dirname $0)/build-wrapper-common.sh
+cd $(dirname $0)/..
 
 mkdir -p dist build
 cp install.sh dist
