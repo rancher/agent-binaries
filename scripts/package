@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd $(dirname $0)/..
+
+mkdir -p dist/artifacts
+
+tar cvzf dist/artifacts/agent-binaries.tar.gz --exclude dist/artifacts apply.sh dist

@@ -1,7 +1,0 @@
-#!/bin/bash
-
-cd $(dirname $0)/../dist
-
-for i in $(<images); do
-    docker push $i
-done

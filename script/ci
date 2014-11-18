@@ -1,7 +1,0 @@
-#!/bin/bash
-
-cd $(dirname $0)/..
-
-./script/bootstrap
-./script/build
-./script/test
