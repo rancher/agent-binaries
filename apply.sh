@@ -7,3 +7,5 @@ cd $(dirname $0)
 mkdir -p ${CATTLE_HOME}/bin
 
 cp dist/nsenter dist/socat ${CATTLE_HOME}/bin
+
+chmod +x ${CATTLE_HOME}/bin/{nsenter,socat}
