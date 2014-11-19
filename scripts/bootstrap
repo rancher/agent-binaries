@@ -2,5 +2,5 @@
 set -e
 
 apt-get update
-apt-get install -y curl
+apt-get install -y curl uuid-runtime
 apt-get build-dep -y util-linux socat
