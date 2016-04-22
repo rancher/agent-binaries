@@ -3,7 +3,7 @@
 Builds nsenter and socat for the Cattle agent.
 
 ### Build
-`./script/build`
+`./build.sh`
 
 ### Contact
 For bugs, questions, comments, corrections, suggestions, etc., open an issue in [rancher/rancher](//github.com/rancher/rancher/issues) with a title starting with `[agent-binaries] `.

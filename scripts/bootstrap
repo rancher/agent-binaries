@@ -1,6 +1,13 @@
-#!/bin/bash
-set -e
+#!/bin/sh
+set -ex
 
-apt-get update
-apt-get install -y curl uuid-runtime
-apt-get build-dep -y util-linux socat
+apk update
+apk add util-linux socat
+
+cd $(dirname $0)/..
+
+rm -rf ./dist
+mkdir ./dist
+
+cp /usr/bin/nsenter ./dist/
+cp /usr/bin/socat ./dist/

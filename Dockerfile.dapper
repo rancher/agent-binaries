@@ -1,0 +1,10 @@
+FROM alpine:3.3
+WORKDIR /source
+COPY ./scripts/bootstrap ./scripts/bootstrap
+RUN ./scripts/bootstrap
+
+ENV DAPPER_SOURCE /source
+ENV DAPPER_OUTPUT ./dist/artifacts
+ENV SHELL /bin/sh
+
+CMD ./scripts/package
